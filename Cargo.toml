@@ -1,0 +1,26 @@
+[package]
+name = "irclogger-viewer"
+version = "0.0.0"
+edition = "2018"
+publish = false
+
+[dependencies]
+anyhow = "1.0.44"
+askama = "0.10.5"
+chrono = "0.4.19"
+clap = "2.33.3"
+encoding_rs = "0.8.28"
+encoding_rs_io = "0.1.7"
+gotham = "0.6.0"
+gotham_derive = "0.6.0"
+htpasswd-verify = "0.2.0"
+http-auth-basic = "0.3.1"
+lazy_static = "1.4.0"
+mime = "0.3.16"
+regex = "1.5.4"
+serde = { version = "1.0.130", features = ["derive"] }
+serde_json = "1.0.68"
+tokio = { version = "1.12.0", features = ["full"] }
+
+[patch.crates-io]
+htpasswd-verify = { git = "https://github.com/TheEnbyperor/htpasswd-verify/", commit = "eae5ff61ffc12e25bd3af67d8020b280253bc9dc" }

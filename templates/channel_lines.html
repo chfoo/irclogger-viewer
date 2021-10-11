@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %} #{{ channel_name }} {{ date_slug }} {% endblock %}
+
+{% block content %}
+
+<h1>#{{ channel_name }} {{ date_slug }}</h1>
+
+<p>
+    <a href="/bin/irclogger_logs/{{ channel_name }}">↑back</a>
+    <a href="/bin/irclogger_log_search/{{ channel_name }}">Search</a>
+</p>
+
+<table>
+<colgroup>
+    <col class="col-time">
+    <col class="col-nick">
+    <col class="col-text">
+</colgroup>
+
+<tr>
+    <th>Time</th>
+    <th>Nickname</th>
+    <th>Message</th>
+</tr>
+
+{% for line in lines %}
+    <tr class="
+        {% if selected_line_number == line.line_number %} selected {% endif %}
+    ">
+        <td class="time">
+            {{ line.date.format("%H:%M") }}
+            <a name="l{{ line.line_number }}"
+                href="?date={{ date_slug }}&sel={{ line.line_number }}#l{{ line.line_number }}">
+                <sup alt="permalink">🔗</sup>
+            </a>
+        </td>
+        <td>{{ line.nickname }}</td>
+        <td class="
+            {% if line.nickname.is_empty() %} status {% else %} message {% endif %}
+            {% if line.nickname == "*" %} action {% endif %}
+        ">{{ line.text }}</td>
+    </tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}

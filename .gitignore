@@ -1,0 +1,10 @@
+# Rust output
+/target/
+
+
+# Visual Studio Code user specific configs
+/.vscode/launch.json
+
+
+# Personal testing files
+/test_data/

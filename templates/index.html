@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Logs of IRC Channels{% endblock %}
+
+{% block content %}
+
+<h1>Logs of IRC Channels</h1>
+
+<ul>
+{% for channel in channels %}
+    <li>
+        <a href="/bin/irclogger_logs/{{ channel.name }}">{{ channel.name }}</a>
+        {% if channel.is_private %}🔏{% endif %}
+        <!--(<a href="/bin/irclogger_log/{{ channel.name }}">today log</a>,-->
+        <a href="/bin/irclogger_log_search/{{ channel.name }}">search</a>)
+    </li>
+{% endfor %}
+</ul>
+
+<hr>
+
+{{ message|safe }}
+
+<hr>
+
+<p>🔏 indicates password-protected logs.</p>
+
+{% endblock %}

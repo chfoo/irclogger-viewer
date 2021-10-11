@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}IRC Log Viewer{% endblock %}</title>
+    <style>
+        html,
+        body {
+            background-color: #F8F8FF;
+            color: black;
+            font-size: 1em;
+            font-family: sans-serif;
+        }
+
+        a:link {
+            color: #204a87;
+        }
+
+        a:visited {
+            color: #5c3566;
+        }
+
+        a:active,
+        a:hover {
+            color: #a40000;
+        }
+
+        table {
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        @media (max-width: 42em) {
+            table {
+                width: 98vw;
+            }
+
+            html,
+            body {
+                margin: 0px;
+            }
+        }
+
+        @media (min-width: 42em) {
+            table {
+                width: 40em;
+            }
+        }
+
+        th {
+            background-color: #eeeeee;
+        }
+
+        th,
+        td {
+            padding-top: 0.5em;
+            padding-bottom: 0.5em;
+            padding-left: 0.2em;
+            padding-right: 0.2em;
+            vertical-align: top;
+        }
+
+        td.status {
+            color: #8A8A8A;
+            font-size: 0.8em;
+        }
+
+        tr:nth-child(even) {
+            background-color: #F8F8F8;
+        }
+
+        td.message {
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+
+        td.action {
+            font-style: italic;
+        }
+
+        .col-nick {
+            width: 8em;
+        }
+
+        .col-time {
+            width: 6em;
+        }
+
+        .col-date {
+            width: 8em;
+        }
+
+        .col-link {
+            width: 4em;
+        }
+
+        td.time {
+            font-size: 0.8em;
+        }
+
+        tr.selected {
+            background-color: #FFD9A1;
+        }
+    </style>
+</head>
+
+<body>
+    {% block content %}{% endblock %}
+    <hr>
+    <a href="https://github.com/chfoo/irclogger-viewer">irclogger-viewer</a>
+</body>
+
+</html>

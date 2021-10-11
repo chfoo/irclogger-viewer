@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}#{{ channel_name }} IRC log search {% endblock %}
+
+{% block content %}
+
+<h1>#{{ channel_name }} IRC log search</h1>
+
+<p>
+    <a href="/bin/irclogger_logs/{{ channel_name }}">↑back</a>
+</p>
+
+<form method="get">
+    <input type="search" name="search">
+    <button type="submit" name="action" value="search">Search</button>
+    by <a href="http://www.tgries.de/agrep/agrephlp.html#AGREPMETASYMBOLS">agrep</a>
+
+    <p>
+        agrep is grep with operators <code>,</code> for OR and <code>;</code> for AND and approximate searching.
+    </p>
+    <p>
+        To search when Colas said Doh!, search: <code>colas;doh!</code>
+    </p>
+
+    Options:
+    <ul>
+        <li>
+            <label>
+                <input type="checkbox" name="case" value="on">
+                Case sensitive: searching for <code>log</code> will not find <code>Log</code>
+            </label>
+        </li>
+        <li>
+            <label>
+                <input type="checkbox" name="verbatim" value="on">
+                Verbatim (no approximations nor regular expressions nor operators)
+            </label>
+        </li>
+        <li>
+            <label>
+                <input type="checkbox" name="word" value="on">
+                Word search: Searching for "win" will not match "wind"
+            </label>
+        </li>
+    </ul>
+</form>
+
+{% if has_results %}
+<h2>Results:</h2>
+
+<table>
+
+<colgroup>
+    <col class="col-date">
+    <col class="col-link">
+    <col class="col-text">
+</colgroup>
+
+<tr>
+    <th>Date</th>
+    <th>Link</th>
+    <th>Line</th>
+</tr>
+
+{% for result in results %}
+<tr>
+    <td>{{ result.date_slug }}</td>
+    <td><a href="/bin/irclogger_log/{{ channel_name }}?date={{ result.date_slug }}&sel={{ result.line_number }}#l{{ result.line_number }}">{{ result.line_number }}</a></td>
+    <td>{{ result.raw_line }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+{% endif %}
+
+{% endblock %}

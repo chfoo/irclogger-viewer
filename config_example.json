@@ -1,0 +1,6 @@
+{
+    "chat_log_directory": "log/",
+    "apache_password_file": "passwords",
+    "custom_message_html_file": "message.html",
+    "web_server_port_number": 8033
+}

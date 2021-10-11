@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Channel #{{ channel_name }} IRC log{% endblock %}
+
+{% block content %}
+
+<h1>Channel #{{ channel_name }} IRC log</h1>
+
+<p>
+    <a href="/bin/irclogger_logs/">↑back</a>
+    <a href="/bin/irclogger_log_search/{{ channel_name }}">Search</a>
+</p>
+
+<ul>
+{% for entry in entries %}
+    <li>
+        <a href="/bin/irclogger_log/{{ channel_name }}/?date={{ entry.date_slug }}">{{ entry.date.format("%Y-%m-%d") }}</a>
+        {{ entry.message_count }} lines(s)
+        (<a href="/bin/irclogger_log/{{ channel_name }}/?date={{ entry.date_slug }}&raw=on">raw text</a>)
+    </li>
+{% endfor %}
+</ul>
+
+{% endblock %}
