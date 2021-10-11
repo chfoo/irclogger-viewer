@@ -148,7 +148,7 @@ pub fn channel_lines(state: &mut State) -> anyhow::Result<Response<Body>> {
     response.headers_mut().append(
         "Link",
         format!(
-            "<https://{host}/bin/irclogger_logs/{channel}/?date={date_slug}>; rel=\"canonical\"",
+            "<https://{host}/bin/irclogger_log/{channel}/?date={date_slug}>; rel=\"canonical\"",
             host = host,
             channel = params.channel,
             date_slug = query.date
