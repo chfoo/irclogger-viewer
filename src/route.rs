@@ -300,7 +300,8 @@ fn user_has_access(state: &mut State, channel: &str) -> anyhow::Result<bool> {
 
         if let Some(value) = headers.get("Authorization") {
             match Credentials::from_header(value.to_str().unwrap_or_default().to_string()) {
-                Ok(credentials) => Ok(app_state.is_password_ok(channel, &credentials.password)?),
+                Ok(credentials) => Ok(channel == credentials.user_id
+                    && app_state.is_password_ok(channel, &credentials.password)?),
                 Err(_) => Ok(false),
             }
         } else {

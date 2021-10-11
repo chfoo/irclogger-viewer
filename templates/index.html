@@ -11,7 +11,7 @@
     <li>
         <a href="/bin/irclogger_logs/{{ channel.name }}">{{ channel.name }}</a>
         {% if channel.is_private %}🔏{% endif %}
-        <!--(<a href="/bin/irclogger_log/{{ channel.name }}">today log</a>,-->
+        (<!--<a href="/bin/irclogger_log/{{ channel.name }}">today log</a>,-->
         <a href="/bin/irclogger_log_search/{{ channel.name }}">search</a>)
     </li>
 {% endfor %}
